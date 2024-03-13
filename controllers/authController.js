@@ -1,12 +1,11 @@
 // controllers/authController.js
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('../entities');
+const { User } = require('../config/db');
 
 const login = async (req, res) => {
   try {
-    const { username, password } = req.body;    
-
+    const { username, password } = req.body;
     const user = await User.findOne({ where: { username } });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
@@ -14,7 +13,6 @@ const login = async (req, res) => {
     }
 
     const token = generateToken(user);
-
     res.json({ token });
   } catch (error) {
     console.error(error);
@@ -25,19 +23,16 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   try {
     const { username, password } = req.body;
-    
-    const existingUser = await User.findOne({ where: { username: username } });
-    
+    const existingUser = await User.findOne({ where: { username } });
+
     if (existingUser) {
       return res.status(400).json({ message: 'Username already exists' });
     }
 
     const hashedPassword = bcrypt.hashSync(password, 10);
-
     const newUser = await User.create({ username, password: hashedPassword });
 
     const token = generateToken(newUser);
-
     res.json({ token });
   } catch (error) {
     console.error(error);

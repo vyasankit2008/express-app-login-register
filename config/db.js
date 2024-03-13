@@ -1,15 +1,11 @@
-// config/db.js
-require('dotenv').config();
+const sequelize = require('./dbConfig');
+const User = require('../entities/user');
+
+const models = {
+  User: User(sequelize),
+};
 
 module.exports = {
-  development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    dialect: 'mysql',
-  },
-  production: {
-    // Add production database configuration here
-  },
+  sequelize,
+  ...models,
 };

@@ -1,8 +1,8 @@
-// entities/user.js
+// entities/User.js
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('User', {
+  const User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,4 +13,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   });
+
+  return User;
 };

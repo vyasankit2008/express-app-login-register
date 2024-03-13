@@ -1,5 +1,5 @@
 // controllers/profileController.js
-const { User } = require('../entities');
+const { User } = require('../config/db');
 
 const getProfile = async (req, res) => {
   try {
@@ -10,7 +10,7 @@ const getProfile = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.render('profile', { user });
+    res.send({ user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
