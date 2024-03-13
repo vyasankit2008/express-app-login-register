@@ -1,4 +1,4 @@
-# Project Name
+# Express App : Login AND register
 
 The express-app-login-register is a web application built with Express.js and MySQL that provides user authentication functionalities including registration, login, and profile management. It offers a secure and efficient way for users to create accounts, log in, and manage their profiles.
 
@@ -15,9 +15,6 @@ Key features include:
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
