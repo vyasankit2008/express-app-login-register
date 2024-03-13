@@ -21,7 +21,7 @@ Key features include:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/vyasankit2008/express-app-login-register.git
 
 2. install module:
     ```bash
